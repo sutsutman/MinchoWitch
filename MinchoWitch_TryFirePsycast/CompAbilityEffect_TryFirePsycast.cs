@@ -26,6 +26,4 @@ namespace MinchoWitch_TryFirePsycast
 			Props.incidentDef.Worker.TryExecute(incParm);
 		}
 	}
-
-
 }
