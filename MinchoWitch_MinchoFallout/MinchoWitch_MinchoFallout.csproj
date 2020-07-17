@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IncidentWorker_MinchoFallout.cs" />
     <Compile Include="MinchoFalloutDefOf.cs" />
     <Compile Include="GameCondition_MinchoFallout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

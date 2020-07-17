@@ -124,37 +124,34 @@ namespace MinchoWitch_Psycast
         }
 
         // Token: 0x060041E4 RID: 16868 RVA: 0x00160168 File Offset: 0x0015E368
+
+        // Token: 0x0600415E RID: 16734 RVA: 0x0015D834 File Offset: 0x0015BA34
         public override bool GizmoDisabled(out string reason)
         {
-            bool result;
             if (!this.CanQueueCast)
             {
                 reason = "AbilityAlreadyQueued".Translate();
-                result = true;
+                return true;
             }
-            else if (!this.pawn.Drafted && this.def.disableGizmoWhileUndrafted)
+            if (!this.pawn.Drafted && this.def.disableGizmoWhileUndrafted)
             {
                 reason = "AbilityDisabledUndrafted".Translate();
-                result = true;
+                return true;
             }
-            else if (this.pawn.Downed)
+            if (this.pawn.Downed)
             {
                 reason = "CommandDisabledUnconscious".TranslateWithBackup("CommandCallRoyalAidUnconscious").Formatted(this.pawn);
-                result = true;
+                return true;
             }
-            else
+            for (int i = 0; i < this.comps.Count; i++)
             {
-                for (int i = 0; i < this.comps.Count; i++)
+                if (this.comps[i].GizmoDisabled(out reason))
                 {
-                    if (this.comps[i].GizmoDisabled(out reason))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
-                reason = null;
-                result = false;
             }
-            return result;
+            reason = null;
+            return false;
         }
         // Token: 0x060041E5 RID: 16869 RVA: 0x0016033C File Offset: 0x0015E53C
         public override void QueueCastingJob(LocalTargetInfo target, LocalTargetInfo destination)

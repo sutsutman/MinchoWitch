@@ -20,7 +20,7 @@ namespace MinchoWitch_Summoner
 		// Token: 0x0600419E RID: 16798 RVA: 0x0015EE2D File Offset: 0x0015D02D
 		public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
 		{
-			Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("Rat"), null);
+			Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("MinchoGolem"), null);
 			pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, null, true, false, null, false);
 			base.Apply(target, dest);
 			GenSpawn.Spawn(pawn, target.Cell, this.parent.pawn.Map, WipeMode.Vanish);
